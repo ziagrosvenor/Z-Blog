@@ -1,0 +1,43 @@
+body {
+	background-color: #F2F2F2;
+}
+.post-row {
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin-bottom: 20px;
+
+}
+.post-row img {
+	margin-bottom: 25px;
+}
+.btn {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.btn a {
+	color: white;
+}
+.btn a:hover {
+	color: white;
+}
+.edit-post-form input, textarea {
+	margin-top: 10px;
+	width: 100%;
+
+}
+textarea.input-lg {
+	min-height: 300px;
+}
+.edit-post-form input[type=submit] {
+	display: block;
+}
+@media (max-width: 768px) {
+  input {
+    display: block;
+    width: 100%;
+  }
+  input[type=submit] {
+  	margin-top: 20px;
+  }
+}
