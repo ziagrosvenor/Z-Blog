@@ -5,7 +5,7 @@ class Database
 	public $username = 'root';
 	public $password = 'root';
 	public $database = 'posts';
-	public $con;
+	public $pdo;
 	
 	/**
 	 * Self invoking function to always connect to db when using db class
@@ -21,10 +21,11 @@ class Database
 	 */
 	public function connect()
 	{	
+		$dsn = 'mysql:host=' . $this->server . ';dbname=' . $this->database;
+
 		// assign connection to $con
-		$con = mysqli_connect($this->server, $this->username, $this->password);
-		// Select database
-		mysqli_select_db($con, $this->database);
+		$pdo = new PDO($dsn, $this->username, $this->password);
+
 		// Echo failed if connection error
 		if (mysqli_connect_errno()) {
 			echo 'Failed to connect';
@@ -32,29 +33,32 @@ class Database
 		// Used instead of return to update the database objects parameter
 		// $con inside the function is added to the objects parameter con
 		else {
-			$this->con = $con;
+			$this->pdo = $pdo;
 		}
 	}
+
 	/**
 	 * Queries database for the argument $sql
 	 * @param  string $sql
 	 * @return mysqli_query object
 	 */
 	public function query($sql)
-	{
-		$result = mysqli_query($this->con, $sql);
+	{	
+
+		$statement = $this->pdo->prepare($sql);
+
 		// when errors die error
-		if (!$result) {
-			die(mysqli_error($this->con));
+		if (!$statement) {
+			die(mysqli_error($this->pdo));
 		} 
 		// return mysql query array
 		else {
-			return $result;
+			return $statement;
 		}
 	}
 
-	public function escape($string)
-	{
-		return mysqli_escape_string($this->con, $string);
-	}
+	// public function escape($string)
+	// {
+	// 	return mysqli_escape_string($this->, $string);
+	// }
 }
