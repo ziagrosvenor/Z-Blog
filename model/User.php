@@ -2,9 +2,9 @@
 
 class User
 {
-
+	// User property
 	public $db;
-	// public $posts;
+
 	public function __construct($db)
 	{
 		$this->db = $db;
@@ -30,14 +30,17 @@ class User
 			header("location: index.php?page=login_form");
 		}
 	}
+
+	/**
+	 * Redirect for when admin is logged in
+	 */
 	public function forceLogin()
 	{
+		// Check if admin session is set
 	    if (isset($_SESSION['admin'])) {
+	    	// Redirect
 			header("location: index.php?page=admin");
 		}
-		// else if(!$_POST) {
-		// 	header("location: index.php?page=login_form");
-		// } 
 	}
 
 	/**
@@ -88,7 +91,7 @@ class User
 				header('location: index.php?page=admin');
 			}
 		}
-		
+
 		else {
 			// redirect and add invalid $_GET for form
 			header('location: index.php?page=login_form&login=invalid');

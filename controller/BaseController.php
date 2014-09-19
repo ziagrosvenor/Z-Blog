@@ -3,7 +3,7 @@
 class BaseController 
 {
 	/**
-	 * Controller for general site header
+	 * Render header method
 	 */
 	public function renderHeader()
 	{
@@ -11,6 +11,9 @@ class BaseController
 		include 'view/templates/nav.inc.php';
 	}
 
+	/*
+	 * Render footer method
+	 */
 	public function renderFooter()
 	{
 		include 'view/templates/footer.inc.php';

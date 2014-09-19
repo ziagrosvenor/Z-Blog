@@ -28,20 +28,31 @@ class AdminController extends BaseController
 	 */
 	public function adminEdit($id)
 	{
+		// Call getPost method from model
 		$posts = $this->admin->getPost($id);
+
+		// Render header
 		$this->renderHeader();
+
+		// Include main page content
 		include 'view/templates/edit_form.php';
+
+		// Render footer
 		$this->renderFooter();
 	}
+
 	/**
 	 * Updates the posts table with input from edit_post.php
 	 * @return [redirect]
 	 */
 	public function adminUpdate($id)
 	{
+		// Call updatePost method from model
 		$this->admin->updatePost($id);
+
 	 	// increments session counter
 		$_SESSION['updates'] = $_SESSION['updates'] + 1;
+
 		// redirects to admin page controller
 		header("location: index.php?page=admin");
 	}
@@ -51,27 +62,40 @@ class AdminController extends BaseController
 	 */
 	public function createPost()
 	{
+		// Render header
 		$this->renderHeader();
+
+		// Include main page content
 		include 'view/templates/add_post.php';
+
+		// Render footer
 		$this->renderFooter();
 	}
 
-
+	/*
+	 * For new posts 
+	 */
 	public function adminInsert()
 	{
+		// Use insertPost method from model
 		$this->admin->insertPost();
+
+		// Increment updates counter
 		$_SESSION['updates'] = $_SESSION['updates'] + 1;
+
 		// redirects to admin page controller
 		header("location: index.php?page=admin");
 	}
 
+	/*
+	 * Logout admin
+	 */
 	public function logout()
 	{
+		// End session
 		session_destroy();
+
+		// Redirect
 		header("location: index.php");
 	}
-	// public function adminEdit()
-	// {
-
-	// }
 }

@@ -1,6 +1,10 @@
 <?php 
+
 class Database
 {
+	/*
+	 * Database properties
+	 */
 	public $server 	 = 'localhost';
 	public $username = 'root';
 	public $password = 'root';
@@ -21,17 +25,18 @@ class Database
 	 */
 	public function connect()
 	{	
+		// Assign dsn string
 		$dsn = 'mysql:host=' . $this->server . ';dbname=' . $this->database;
 
-		// assign connection to $con
+		// Assign connection to $pdo
 		$pdo = new PDO($dsn, $this->username, $this->password);
 
 		// Echo failed if connection error
 		if (mysqli_connect_errno()) {
 			echo 'Failed to connect';
 		}
-		// Used instead of return to update the database objects parameter
-		// $con inside the function is added to the objects parameter con
+
+		// $pdo inside the function is added to the objects parameter pdo
 		else {
 			$this->pdo = $pdo;
 		}
@@ -44,7 +49,7 @@ class Database
 	 */
 	public function query($sql)
 	{	
-
+		// Prepare SQL query
 		$statement = $this->pdo->prepare($sql);
 
 		// when errors die error
@@ -56,9 +61,4 @@ class Database
 			return $statement;
 		}
 	}
-
-	// public function escape($string)
-	// {
-	// 	return mysqli_escape_string($this->, $string);
-	// }
 }
