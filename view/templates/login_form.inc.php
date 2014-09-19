@@ -10,10 +10,10 @@
 	</div>
 	<div class="login-form">
 	<form action="index.php?page=login_form" method="post">
-			<label class="input-lg" for="username">User Name</label>
-			<input class="input-lg" type="text" name="username">
-			<label class="input-lg" for="password">Password</label>
-			<input class="input-lg" type="password" name="password">
-			<input class="input-lg" type="submit" name="submit">
-		</form>
+		<label class="input-lg" for="username">User Name</label>
+		<input class="input-lg" type="text" name="username">
+		<label class="input-lg" for="password">Password</label>
+		<input class="input-lg" type="password" name="password">
+		<input class="input-lg" type="submit" name="submit">
+	</form>
 </div>
