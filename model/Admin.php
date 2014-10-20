@@ -48,7 +48,7 @@ class Admin
 	public function getPost($id)
 	{
 		// Query
-		$stmt = $this->db->query("SELECT * FROM posts WHERE id=(:id)");
+		$stmt = $this->db->query("SELECT * FROM posts WHERE id=:id");
 
 		// Binds $id parameter to the PDO
 		$stmt->bindParam(':id', $id);
@@ -72,34 +72,28 @@ class Admin
 	public function updatePost($id)
 	{
 		// Converts any HTML in input to plain text
-	 	$update_name = htmlentities($_POST['name']);
-	 	$update_post = htmlentities($_POST['content']);
+	 	$post_name = htmlentities($_POST['name']);
+	 	$post_content = htmlentities($_POST['content']);
 
 	 	// Query
 	 	$stmt = $this->db->query("UPDATE posts SET name= :name, post= :posts WHERE id= :id");
 
-	 	// Binds variables to PDO
-	 	
-	 	// $stmt->bindParam(':name', $update_name);
-	 	// $stmt->bindParam(':posts', $update_post);
-	 	// $stmt->bindParam(':id', $id);
-
 	 	// Execute Query
-	 	$stmt->execute(array(':name' => $update_name, ':posts' => $update_post, ':id' => $id));
+	 	$stmt->execute(array(':name' => $post_name, ':posts' => $post_content, ':id' => $id));
 	}
 
 	// Insert Post
 	public function insertPost()
 	{	
-		// XSS security fix
+		// XSS security
 		$post_name = htmlentities($_POST['name']);
 	 	$post_content = htmlentities($_POST['content']);
 
 	 	// Query 
-	 	$stmt = $this->db->query("INSERT INTO posts VALUES ( DEFAULT, (:name), (:content))");
+	 	$stmt = $this->db->query("INSERT INTO posts VALUES ( DEFAULT, :name, :content)");
 
 	 	// Execute query
-	 	$stmt->execute(array(':update_name'=>$update_name, ':update_content'=>$update_post));
+	 	$stmt->execute(array(':name'=>$post_name, ':content'=>$post_content));
 	}
 		 
 
