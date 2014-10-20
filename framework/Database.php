@@ -11,10 +11,24 @@ class Database
 	public $database = 'posts';
 	public $pdo;
 	
+	// Public static variable used to instantiate singleton
+	public static $instance;
+
+	/**
+	 * Static method used to instantiate singleton
+	 * @return [object] Database object
+	 */
+	public static function getInstance() {
+		if (!isset($instance)) {
+			Database::$instance = new Database();
+		}
+		return Database::$instance;
+	}
+
 	/**
 	 * Self invoking function to always connect to db when using db class
 	 */
-	public function __construct() 
+	private function __construct() 
 	{
 		$this->connect();
 	}

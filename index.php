@@ -17,8 +17,8 @@ require 'model/Blog.php';
 require 'controller/BlogController.php';
 require 'controller/AdminController.php';
 
-// instantiate frameworks
-$db = new Database();
+// Instantiate frameworks
+$db = Database::getInstance();
 
 // Instantiate the models
 $user = new Model\User($db);
