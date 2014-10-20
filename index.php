@@ -21,13 +21,13 @@ require 'controller/AdminController.php';
 $db = new Database();
 
 // Instantiate the models
-$user = new User($db);
-$admin = new Admin($db);
-$blog = new Blog($db);
+$user = new Model\User($db);
+$admin = new Model\Admin($db);
+$blog = new Model\Blog($db);
 
 // Instantiate the controllers
-$blogController = new BlogController($blog);
-$adminController = new AdminController($admin);
+$blogController = new Controller\Blog($blog);
+$adminController = new Controller\Admin($admin);
 
 // Assign get variables
 if (isset($_GET['post_id'])) {

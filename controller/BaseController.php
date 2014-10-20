@@ -1,6 +1,8 @@
 <?php
 
-class BaseController 
+namespace Controller;
+
+class Base 
 {
 	/**
 	 * Render header method

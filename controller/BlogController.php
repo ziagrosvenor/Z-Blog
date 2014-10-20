@@ -1,9 +1,11 @@
 <?php
 
+namespace Controller;
+
 //BlogController requires BaseController to render views
 require 'BaseController.php';
 
-class BlogController extends BaseController
+class Blog extends Base
 {
 	// $blog property for injecting blog model
 	public $blog;

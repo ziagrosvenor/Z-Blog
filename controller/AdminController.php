@@ -1,6 +1,8 @@
 <?php
 
-class AdminController extends BaseController 
+namespace Controller;
+
+class Admin extends Base
 {
 	// $blog property for injecting blog model
 	public $admin;
