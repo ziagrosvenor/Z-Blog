@@ -11,6 +11,7 @@ class User
 	{
 		$this->db = $db;
 	}
+
 	/**
 	 * Encrypts passwords with B_CRYPT algo
 	 * @param  [string] $password_to_hash
@@ -29,7 +30,7 @@ class User
 	public function forceAdmin()
 	{
 		if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
-			header("location: index.php?page=login_form");
+			header("location: ./login_form");
 		}
 	}
 
@@ -41,7 +42,7 @@ class User
 		// Check if admin session is set
 	    if (isset($_SESSION['admin'])) {
 	    	// Redirect
-			header("location: index.php?page=admin");
+			header("location: ./admin");
 		}
 	}
 
@@ -90,7 +91,7 @@ class User
 				$_SESSION['updates'] = 0;
 
 				// redirect
-				header('location: index.php?page=admin');
+				header('location: ./admin');
 			}
 		}
 

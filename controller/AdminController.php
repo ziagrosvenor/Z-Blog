@@ -56,7 +56,7 @@ class Admin extends Base
 		$_SESSION['updates'] = $_SESSION['updates'] + 1;
 
 		// redirects to admin page controller
-		header("location: index.php?page=admin");
+		header("location: ./admin");
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Admin extends Base
 		$_SESSION['updates'] = $_SESSION['updates'] + 1;
 
 		// redirects to admin page controller
-		header("location: index.php?page=admin");
+		header("location: ./admin");
 	}
 
 	/*
@@ -98,6 +98,6 @@ class Admin extends Base
 		session_destroy();
 
 		// Redirect
-		header("location: index.php");
+		header("location: ./");
 	}
 }
