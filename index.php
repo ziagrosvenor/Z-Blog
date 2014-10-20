@@ -6,16 +6,16 @@
 session_start();
 
 // Database class framework 
-include	'framework/Database.php';
+require	'framework/Database.php';
 
 // Models for user and admin
-include 'model/User.php';
-include 'model/Admin.php';
-include 'model/Blog.php';
+require 'model/User.php';
+require 'model/Admin.php';
+require 'model/Blog.php';
 
 // Controllers to configure view files
-include 'controller/BlogController.php';
-include 'controller/AdminController.php';
+require 'controller/BlogController.php';
+require 'controller/AdminController.php';
 
 // instantiate frameworks
 $db = new Database();

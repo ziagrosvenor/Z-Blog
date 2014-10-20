@@ -2,7 +2,6 @@
 
 class Admin
 {
-
 	// Blog properties
 	public $db;
 	public $posts;
@@ -75,10 +74,16 @@ class Admin
 	 	$update_post = htmlentities($_POST['content']);
 
 	 	// Query
-	 	$stmt = $this->db->query("UPDATE posts SET name=(:update_name), post=(:update_content) WHERE id=(:id)");
+	 	$stmt = $this->db->query("UPDATE posts SET name= :name, post= :posts WHERE id= :id");
+
+	 	// Binds variables to PDO
+	 	
+	 	// $stmt->bindParam(':name', $update_name);
+	 	// $stmt->bindParam(':posts', $update_post);
+	 	// $stmt->bindParam(':id', $id);
 
 	 	// Execute Query
-	 	$stmt->execute(array(':update_name'=>$update_name, ':update_content'=>$update_post, ':id'=>$id));
+	 	$stmt->execute(array(':name' => $update_name, ':posts' => $update_post, ':id' => $id));
 	}
 
 	// Insert Post
