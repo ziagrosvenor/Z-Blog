@@ -5,13 +5,13 @@ class Database
 	/*
 	 * Database properties
 	 */
-	public $server 	 = 'localhost';
-	public $username = 'root';
-	public $password = 'root';
-	public $database = 'posts';
+	private $server 	 = 'localhost';
+	private $username = 'root';
+	private $password = 'root';
+	private $database = 'posts';
 	public $pdo;
 	
-	// Public static variable used to instantiate singleton
+	// Public static property used to instantiate singleton
 	public static $instance;
 
 	/**
@@ -26,7 +26,7 @@ class Database
 	}
 
 	/**
-	 * Self invoking function to always connect to db when using db class
+	 * Contructor magic method connects to the database upon instantiation
 	 */
 	private function __construct() 
 	{
@@ -35,20 +35,14 @@ class Database
 
 	/**
 	 * Connects to the database
-	 * @return mysqli object
 	 */
-	public function connect()
+	private function connect()
 	{	
 		// Assign dsn string
 		$dsn = 'mysql:host=' . $this->server . ';dbname=' . $this->database;
 
 		// Assign connection to $pdo
 		$pdo = new PDO($dsn, $this->username, $this->password);
-
-		// Echo failed if connection error
-		if (mysqli_connect_errno()) {
-			echo 'Failed to connect';
-		}
 
 		// $pdo inside the function is added to the objects parameter pdo
 		else {
@@ -59,7 +53,7 @@ class Database
 	/**
 	 * Queries database for the argument $sql
 	 * @param  string $sql
-	 * @return mysqli_query object
+	 * @return Sql Query $statement
 	 */
 	public function query($sql)
 	{	
